@@ -27,6 +27,6 @@ A small desktop GUI app to upload files, preview data, generate basic statistics
 - The app starts/controls an Ollama server process via `OllamaServer.py` and uses `ollama` for embeddings and chat.
 
 ## Files
-- `Summarizer.py` — GUI and core logic
-- `CSVParser.py` — CSV parsing, chunking, embeddings, simple stats
-- `OllamaServer.py` — manages the Ollama server process
+- `Summarizer.py` - GUI and core logic
+- `CSVParser.py` - CSV parsing, chunking, embeddings, simple stats
+- `OllamaServer.py` - manages the Ollama server process
