@@ -1,5 +1,5 @@
-from CSVSummarizer import CSVSummarizer
+from Summarizer import Summarizer
 
 if __name__ == '__main__':
-    app = CSVSummarizer()
+    app = Summarizer()
     app.run()

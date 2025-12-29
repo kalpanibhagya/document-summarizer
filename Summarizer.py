@@ -5,10 +5,10 @@ from OllamaServer import OllamaServer
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("blue")
 
-class CSVSummarizer:
+class Summarizer:
     def __init__(self):
         self.root = ctk.CTk()
-        self.root.title("CSV Data Summarizer with RAG")
+        self.root.title("Document Summarizer")
         self.root.geometry("1000x800")
         self.server = OllamaServer()
         self.conversation = []
@@ -44,7 +44,7 @@ class CSVSummarizer:
         # Buttons
         ctk.CTkButton(
             control_frame,
-            text="📁 Upload CSV",
+            text="Upload File",
             command=self.load_csv,
             width=120,
             fg_color="#3498db",
@@ -53,7 +53,7 @@ class CSVSummarizer:
         
         ctk.CTkButton(
             control_frame,
-            text="🔮 Generate Embeddings",
+            text="Generate Embeddings",
             command=self.generate_embeddings,
             width=150,
             fg_color="#e67e22",
@@ -62,7 +62,7 @@ class CSVSummarizer:
         
         ctk.CTkButton(
             control_frame,
-            text="📋 Summarize",
+            text="Summarize",
             command=self.auto_summarize,
             width=120,
             fg_color="#9b59b6",
@@ -71,7 +71,7 @@ class CSVSummarizer:
         
         ctk.CTkButton(
             control_frame,
-            text="🗑️ Clear",
+            text="Clear",
             command=self.clear_chat,
             fg_color="red",
             hover_color="darkred",
@@ -90,13 +90,13 @@ class CSVSummarizer:
         content_frame = ctk.CTkFrame(self.root)
         content_frame.pack(fill="both", expand=True, padx=20, pady=(0, 10))
         
-        # Left side - CSV Preview
+        # Left side - File preview
         left_frame = ctk.CTkFrame(content_frame)
         left_frame.pack(side="left", fill="both", expand=True, padx=(0, 5))
         
         ctk.CTkLabel(
             left_frame,
-            text="CSV Data Preview",
+            text="Preview",
             font=("Arial", 14, "bold")
         ).pack(pady=5)
         
@@ -275,7 +275,7 @@ class CSVSummarizer:
     def auto_summarize(self):
         """Generate AI summary"""
         if self.csv_data is None:
-            messagebox.showwarning("No Data", "Please upload a CSV file first!")
+            messagebox.showwarning("No Data", "Please upload a file first!")
             return
         
         self.add_message("You", "Generate a comprehensive summary", "user")
@@ -298,7 +298,7 @@ class CSVSummarizer:
                     # Fallback to sample data
                     context = json.dumps(self.csv_data.to_dict()[:10], indent=2)
                 
-                prompt = f"""Analyze this CSV dataset:
+                prompt = f"""Analyze this document:
 
                             Filename: {self.csv_filename}
                             Total Rows: {len(self.csv_data.rows)}
@@ -340,7 +340,7 @@ class CSVSummarizer:
     
     def send_message(self):
         if self.csv_data is None:
-            messagebox.showwarning("No Data", "Please upload a CSV file first!")
+            messagebox.showwarning("No Data", "Please upload a file first!")
             return
         
         message = self.input_text.get("1.0", "end-1c").strip()
