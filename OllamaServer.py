@@ -31,7 +31,7 @@ class OllamaServer:
     
     def is_running(self):
         try:
-            response = requests.get('http://localhost:11434', timeout=1)
+            response = requests.get(OLLAMA_ADDRESS, timeout=1)
             return response.status_code == 200
         except:
             return False

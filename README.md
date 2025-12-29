@@ -21,6 +21,8 @@ A small desktop GUI app to upload files, preview data, generate basic statistics
 4. In the UI: Upload a file → (optional - use for large files) Generate Embeddings → Ask questions or click Summarize
 
 ## Important notes
+- Remember to replace OLLAMA_ADDRESS to the relevant address with port. 
+- This app supports only csvs at the moment. More support will be added later.
 - Generating embeddings enables full-data retrieval for more accurate answers; without them the app uses sample rows.
 - The app starts/controls an Ollama server process via `OllamaServer.py` and uses `ollama` for embeddings and chat.
 
