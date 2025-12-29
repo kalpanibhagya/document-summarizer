@@ -199,7 +199,7 @@ class Summarizer:
                 "system")
             
             self.add_message("System", 
-                "💡 Click 'Generate Embeddings' to enable intelligent querying of all data", 
+                "Click 'Generate Embeddings' to enable intelligent querying of all data", 
                 "system")
             
             self.generate_basic_summary()
@@ -284,8 +284,6 @@ class Summarizer:
         
         def analyze():
             try:
-                import ollama
-                
                 # Use relevant chunks if embeddings are ready
                 if self.embeddings_ready:
                     relevant_chunks = self.csv_data.find_relevant_chunks(
@@ -355,8 +353,6 @@ class Summarizer:
         
         def get_response():
             try:
-                import ollama
-                
                 # Use embeddings for retrieval if available
                 if self.embeddings_ready:
                     relevant_chunks = self.csv_data.find_relevant_chunks(

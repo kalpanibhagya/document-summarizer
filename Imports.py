@@ -9,3 +9,4 @@ import csv
 import json
 from statistics import mean, median, stdev
 import numpy as np
+import ollama
